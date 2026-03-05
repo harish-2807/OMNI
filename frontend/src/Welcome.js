@@ -1,32 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Welcome.css';
 
 const Welcome = () => {
-  const [username, setUsername] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
     const savedUsername = localStorage.getItem('username');
-    if (savedUsername) {
-      setUsername(savedUsername);
-    } else {
+    if (!savedUsername) {
       // If no username found, redirect to login
       navigate('/');
     }
   }, [navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('username');
-    navigate('/');
-  };
-
   return (
     <div className="welcome-container">
       <div className="header">
-        <div className="logo">LOGO HERE</div>
+        <div className="logo">MockBird</div>
         <nav className="navbar">
-          <a href="#" className="nav-item">HOME</a>
+          <button type="button" className="nav-item" onClick={() => console.log('Navigate to home')}>HOME</button>
         </nav>
         <div className="hamburger-menu">
           <div className="bar"></div>

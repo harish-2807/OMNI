@@ -76,7 +76,7 @@ const Login = () => {
 
           <div className="login-link">
             <p>
-              Have an account? <a href="#" className="link">Log in</a>
+              Have an account? <button type="button" className="link" onClick={() => console.log('Navigate to login')}>Log in</button>
             </p>
           </div>
         </div>

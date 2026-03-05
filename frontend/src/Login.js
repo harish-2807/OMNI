@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
@@ -21,32 +20,14 @@ const Login = () => {
     e.preventDefault();
     setError('');
 
-    try {
-      // TODO: Replace with your actual Vercel URL
-      console.log('Login attempt:', { username, password });
-      
-      // Temporary success for testing UI
-      if (username === 'admin' && password === 'admin') {
-        localStorage.setItem('username', username);
-        navigate('/welcome');
-        return;
-      }
-
-      // const response = await axios.post('https://YOUR_VERCEL_URL_HERE/login', {
-      //   username,
-      //   password,
-      // });
-
-      // if (response.status === 200) {
-      //   localStorage.setItem('username', username);
-      //   navigate('/welcome');
-      // }
-    } catch (err) {
-      if (err.response && err.response.status === 401) {
-        setError('Invalid credentials');
-      } else {
-        setError('An error occurred. Please try again.');
-      }
+    // Simple validation for demo purposes
+    if (username === 'admin' && password === 'admin') {
+      // Store username in localStorage
+      localStorage.setItem('username', username);
+      // Navigate to welcome page
+      navigate('/welcome');
+    } else {
+      setError('Invalid credentials');
     }
   };
 
@@ -55,7 +36,7 @@ const Login = () => {
       <div className="login-background">
         <div className="login-card">
           <div className="logo-section">
-            <div className="logo">messimo</div>
+            <div className="logo">MockBird</div>
           </div>
           
           <h1 className="login-title">Create account</h1>

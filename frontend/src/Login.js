@@ -22,17 +22,25 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('https://YOUR_VERCEL_URL_HERE/login', {
-        username,
-        password,
-      });
-
-      if (response.status === 200) {
-        // Store username in localStorage
+      // TODO: Replace with your actual Vercel URL
+      console.log('Login attempt:', { username, password });
+      
+      // Temporary success for testing UI
+      if (username === 'admin' && password === 'admin') {
         localStorage.setItem('username', username);
-        // Navigate to welcome page
         navigate('/welcome');
+        return;
       }
+
+      // const response = await axios.post('https://YOUR_VERCEL_URL_HERE/login', {
+      //   username,
+      //   password,
+      // });
+
+      // if (response.status === 200) {
+      //   localStorage.setItem('username', username);
+      //   navigate('/welcome');
+      // }
     } catch (err) {
       if (err.response && err.response.status === 401) {
         setError('Invalid credentials');
